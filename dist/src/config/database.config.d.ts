@@ -1,0 +1,21 @@
+import { DataSource } from "typeorm";
+import { User } from "../users/entities/user.entity";
+import { Project } from "../projects/entities/project.entity";
+import { Task } from "../tasks/entities/task.entity";
+import { Comment } from "../tasks/entities/comment.entity";
+import { Notification } from "../notifications/entities/notification.entity";
+import { Analytics } from "../analytics/entities/analytics.entity";
+export declare const DatabaseConfig: {
+    type: "postgres";
+    host: string;
+    port: number;
+    username: string;
+    password: string;
+    database: string;
+    entities: (typeof Analytics | typeof User | typeof Project | typeof Task | typeof Comment | typeof Notification)[];
+    migrations: string[];
+    synchronize: boolean;
+    logging: boolean;
+};
+declare const _default: DataSource;
+export default _default;
