@@ -51,9 +51,9 @@ export class DependencyResolverService {
     targetNode: string,
     adjacencyList: Map<string, string[]>,
     visited: Set<string>,
-    recursionStack: Set<string>,
+    stack: Set<string>,
   ): Promise<boolean> {
-    if (recursionStack.has(currentNode)) {
+    if (stack.has(currentNode)) {
       return true // Cycle detected
     }
 
@@ -62,7 +62,7 @@ export class DependencyResolverService {
     }
 
     visited.add(currentNode)
-    recursionStack.add(currentNode)
+    stack.add(currentNode)
 
     const dependencies = adjacencyList.get(currentNode) || []
 
@@ -71,12 +71,12 @@ export class DependencyResolverService {
         return true // Direct cycle to target
       }
 
-      if (await this.hasCycleDFS(dep, targetNode, adjacencyList, visited, recursionStack)) {
+      if (await this.hasCycleDFS(dep, targetNode, adjacencyList, visited, stack)) {
         return true
       }
     }
 
-    recursionStack.delete(currentNode)
+    stack.delete(currentNode)
     return false
   }
 
