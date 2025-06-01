@@ -104,7 +104,7 @@ ELASTICSEARCH_URL=http://localhost:9200
 # Application
 PORT=3000
 NODE_ENV=development
-FRONTEND_URL=http://localhost:3001
+
 \`\`\`
 
 ## 📚 API Documentation
